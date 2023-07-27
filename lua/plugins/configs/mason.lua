@@ -1,5 +1,29 @@
 local options = {
-  ensure_installed = { "lua-language-server" }, -- not an option from mason.nvim
+  ensure_installed = {
+    "lua-language-server",
+    "html-lsp",
+    "prettierd",
+    "rust-analyzer",
+    "debugpy",
+    "css-lsp",
+    "typescript-language-server",
+    "eslint-lsp",
+    "ruff",
+    "ruff-lsp",
+    "js-debug-adapter",
+    "codelldb",
+    "go-debug-adapter",
+    "pyright",
+    "black",
+    "gopls",
+    "docker-compose-language-service",
+    "dockerfile-language-service",
+    "json-lsp",
+    "nginx-language-service",
+    "sqlls",
+    "sql-formatter",
+    "rustfmt",
+  }, -- not an option from mason.nvim
 
   PATH = "skip",
 

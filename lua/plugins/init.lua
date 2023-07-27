@@ -254,7 +254,82 @@ local default_plugins = {
       end
     end,
   },
+  {
+    "neovim/nvim-lspconfig",
 
+     dependencies = {
+       "jose-elias-alvarez/null-ls.nvim",
+       config = function()
+         require "custom.configs.null-ls"
+       end,
+     },
+
+     config = function()
+        require "plugins.configs.lspconfig"
+        require "custom.configs.lspconfig"
+     end,
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    config = function()
+      require("copilot").setup({
+        suggestion = {
+          auto_trigger = true,
+        },
+      })
+    end,
+    event = "InsertEnter",
+  },
+  {
+    "folke/todo-comments.nvim",
+    lazy = false,
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = { },
+  },
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = { },
+  },
+  {
+    'ibhagwan/fzf-lua',
+    -- optional for icon support
+    requires = { 'nvim-tree/nvim-web-devicons' }
+  },
+  {
+    'jedrzejboczar/possession.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    lazy=false,
+    config = function()
+      require('possession').setup{
+        autosave= {
+          current=true,
+          tmp=true,
+          tmp_name='tmp',
+          on_load=true,
+          on_quit=true,
+        },
+        plugins={
+          delete_hidden_buffers=false,
+        },
+      }
+    end,
+  },
+  {
+    'Equilibris/nx.nvim',
+    requires = {
+      'nvim-telescope/telescope.nvim',
+    },
+    lazy=false,
+    config = function()
+      require("nx").setup { }
+    end
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  },
   -- Only load whichkey after all the gui
   {
     "folke/which-key.nvim",

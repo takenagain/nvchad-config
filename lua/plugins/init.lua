@@ -263,18 +263,18 @@ local default_plugins = {
         require "custom.configs.lspconfig"
      end,
   },
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    config = function()
-      require("copilot").setup({
-        suggestion = {
-          auto_trigger = true,
-        },
-      })
-    end,
-    event = "InsertEnter",
-  },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   config = function()
+  --     require("copilot").setup({
+  --       suggestion = {
+  --         auto_trigger = true,
+  --       },
+  --     })
+  --   end,
+  --   event = "InsertEnter",
+  -- },
   {
     "folke/todo-comments.nvim",
     lazy = false,
@@ -310,16 +310,16 @@ local default_plugins = {
       }
     end,
   },
-  {
-    'Equilibris/nx.nvim',
-    requires = {
-      'nvim-telescope/telescope.nvim',
-    },
-    lazy=false,
-    config = function()
-      require("nx").setup { }
-    end
-  },
+  -- {
+  --   'Equilibris/nx.nvim',
+  --   requires = {
+  --     'nvim-telescope/telescope.nvim',
+  --   },
+  --   lazy=false,
+  --   config = function()
+  --     require("nx").setup { }
+  --   end
+  -- },
   {
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,

@@ -9,7 +9,12 @@ local sources = {
   formatting.stylua,
   formatting.ruff,
   -- formatting.black,
-  lint.mypy,
+  lint.mypy.with({
+    extra_args = function()
+      local virtual = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_DEFAULT_ENV") or "/usr"
+      return { "--python-executable", virtual .. "/bin/python3" }
+    end,
+  }),
   lint.ruff,
   null_ls.builtins.diagnostics.ruff.with { extra_args = { "--max-line-length=180" } },
   lint.shellcheck,

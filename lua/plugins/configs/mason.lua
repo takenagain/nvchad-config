@@ -17,12 +17,11 @@ local options = {
     "black",
     "gopls",
     "docker-compose-language-service",
-    "dockerfile-language-service",
+    "dockerfile-language-server",
     "json-lsp",
-    "nginx-language-service",
+    "nginx-language-server",
     "sqlls",
     "sql-formatter",
-    "rustfmt",
   }, -- not an option from mason.nvim
 
   PATH = "skip",

@@ -324,6 +324,20 @@ local default_plugins = {
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   },
+  {
+    "linux-cultist/venv-selector.nvim",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "nvim-telescope/telescope.nvim",
+    },
+    config = true,
+    event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+    keys = {{
+      "<leader>vs", "<cmd>:VenvSelect<cr>",
+      -- optional if you use a autocmd (see #🤖-Automate)
+      "<leader>vc", "<cmd>:VenvSelectCached<cr>"
+    }},
+  },
   -- Only load whichkey after all the gui
   {
     "folke/which-key.nvim",

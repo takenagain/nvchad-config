@@ -53,6 +53,10 @@ local plugins = {
     lazy = false,
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = { },
+    config = function ()
+      vim.cmd("set title")
+      vim.cmd("set foldmethod=indent")
+    end
   },
   {
     "folke/trouble.nvim",

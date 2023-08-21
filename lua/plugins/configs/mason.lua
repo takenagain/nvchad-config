@@ -1,25 +1,39 @@
 local options = {
   ensure_installed = {
+    -- General
     "lua-language-server",
-    "html-lsp",
-    "prettierd",
-    "rust-analyzer",
-    "debugpy",
-    "css-lsp",
-    "typescript-language-server",
-    "eslint-lsp",
-    "ruff",
-    "ruff-lsp",
-    "js-debug-adapter",
-    "codelldb",
-    "go-debug-adapter",
-    "pyright",
-    "black",
-    "gopls",
-    "docker-compose-language-service",
-    "dockerfile-language-server",
     "json-lsp",
     "nginx-language-server",
+
+    -- Rust
+    "rust-analyzer",
+    "codelldb",
+
+    -- Javascript
+    "html-lsp",
+    "prettierd",
+    "eslint-lsp",
+    "js-debug-adapter",
+    "typescript-language-server",
+    "css-lsp",
+
+    -- Python 
+    "debugpy",
+    "pyright",
+    "black",
+    "ruff",
+    "ruff-lsp",
+    "mypy",
+
+    -- Golang
+    "gopls",
+    "go-debug-adapter",
+
+    -- Docker
+    "docker-compose-language-service",
+    "dockerfile-language-server",
+
+    -- SQL
     "sqlls",
     "sql-formatter",
   }, -- not an option from mason.nvim

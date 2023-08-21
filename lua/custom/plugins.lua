@@ -54,8 +54,19 @@ local plugins = {
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = { },
     config = function ()
+      -- FIXME: there has to be a better place to do this or a better way to set these defaults :( 
       vim.cmd("set title")
       vim.cmd("set foldmethod=indent")
+
+      -- autoread 
+      -- vim.cmd("set autoread")
+      -- vim.cmd("autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif")
+      -- vim.cmd("autocmd FileChangedShellPost * echohl WarningMsg | echo 'File changed on disk. Buffer reloaded.' | echohl None")
+      vim.o.autoread = true
+      vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+        command = "if mode() != 'c' | checktime | endif",
+        pattern = { "*" },
+      })
     end
   },
   {

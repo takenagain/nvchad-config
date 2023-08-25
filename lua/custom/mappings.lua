@@ -18,4 +18,11 @@ M.dap_python = {
   }
 }
 
+M.trouble = {
+  plugin = true,
+  n = {
+    ["<leader>fx"] = { ":Trouble", "Trouble" },
+  },
+}
+
 return M

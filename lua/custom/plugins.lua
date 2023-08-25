@@ -71,6 +71,7 @@ local plugins = {
   },
   {
     "folke/trouble.nvim",
+    lazy = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = { },
   },
@@ -125,6 +126,9 @@ local plugins = {
       -- optional if you use a autocmd (see #🤖-Automate)
       "<leader>vc", "<cmd>:VenvSelectCached<cr>"
     }},
+  },
+  {
+    "ActivityWatch/aw-watcher-vim",
   },
 }
 return plugins

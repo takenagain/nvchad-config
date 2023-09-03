@@ -36,18 +36,18 @@ local plugins = {
       end
     end
   },
-    -- {
-  --   "zbirenbaum/copilot.lua",
-  --   cmd = "Copilot",
-  --   config = function()
-  --     require("copilot").setup({
-  --       suggestion = {
-  --         auto_trigger = true,
-  --       },
-  --     })
-  --   end,
-  --   event = "InsertEnter",
-  -- },
+    {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    config = function()
+      require("copilot").setup({
+        suggestion = {
+          auto_trigger = true,
+        },
+      })
+    end,
+    event = "InsertEnter",
+  },
   {
     "folke/todo-comments.nvim",
     lazy = false,
@@ -110,8 +110,10 @@ local plugins = {
   -- },
   {
     "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
-  },
+    cmd = { "MarkdownPreviewToggle" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  }, -- Markdown Preview
   {
     "linux-cultist/venv-selector.nvim",
     dependencies = {

@@ -1,9 +1,9 @@
 local plugins = {
   {
     "mfussenegger/nvim-dap",
-    config = function (_, opts)
-      require("core.utils").load_mappings("dap")
-    end
+    config = function(_, opts)
+      require("core.utils").load_mappings "dap"
+    end,
   },
   {
     "mfussenegger/nvim-dap-python",
@@ -15,15 +15,15 @@ local plugins = {
     config = function(_, opts)
       local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
       require("dap-python").setup(path)
-      require("core.utils").load_mappings("dap_python")
-    end
+      require("core.utils").load_mappings "dap_python"
+    end,
   },
   {
     "rcarriga/nvim-dap-ui",
     dependencies = "mfussenegger/nvim-dap",
     config = function()
-      local dap = require("dap")
-      local dapui = require("dapui")
+      local dap = require "dap"
+      local dapui = require "dapui"
       dapui.setup()
       dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()
@@ -34,17 +34,17 @@ local plugins = {
       dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close()
       end
-    end
+    end,
   },
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     config = function()
-      require("copilot").setup({
+      require("copilot").setup {
         suggestion = {
           auto_trigger = true,
         },
-      })
+      }
     end,
     event = "InsertEnter",
   },
@@ -52,13 +52,13 @@ local plugins = {
     "folke/todo-comments.nvim",
     lazy = false,
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = { },
-    config = function ()
-      -- FIXME: there has to be a better place to do this or a better way to set these defaults :( 
-      vim.cmd("set title")
-      vim.cmd("set foldmethod=indent")
+    opts = {},
+    config = function()
+      -- FIXME: there has to be a better place to do this or a better way to set these defaults :(
+      vim.cmd "set title"
+      vim.cmd "set foldmethod=indent"
 
-      -- autoread 
+      -- autoread
       -- vim.cmd("set autoread")
       -- vim.cmd("autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif")
       -- vim.cmd("autocmd FileChangedShellPost * echohl WarningMsg | echo 'File changed on disk. Buffer reloaded.' | echohl None")
@@ -67,34 +67,34 @@ local plugins = {
         command = "if mode() != 'c' | checktime | endif",
         pattern = { "*" },
       })
-    end
+    end,
   },
   {
     "folke/trouble.nvim",
     lazy = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = { },
+    opts = {},
   },
   {
-    'ibhagwan/fzf-lua',
+    "ibhagwan/fzf-lua",
     -- optional for icon support
-    requires = { 'nvim-tree/nvim-web-devicons' }
+    requires = { "nvim-tree/nvim-web-devicons" },
   },
   {
-    'jedrzejboczar/possession.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
-    lazy=false,
+    "jedrzejboczar/possession.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+    lazy = false,
     config = function()
-      require('possession').setup{
-        autosave= {
-          current=true,
-          tmp=true,
-          tmp_name='tmp',
-          on_load=true,
-          on_quit=true,
+      require("possession").setup {
+        autosave = {
+          current = true,
+          tmp = true,
+          tmp_name = "tmp",
+          on_load = true,
+          on_quit = true,
         },
-        plugins={
-          delete_hidden_buffers=false,
+        plugins = {
+          delete_hidden_buffers = false,
         },
       }
     end,
@@ -113,7 +113,9 @@ local plugins = {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle" },
     ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
   }, -- Markdown Preview
   {
     "linux-cultist/venv-selector.nvim",
@@ -123,11 +125,15 @@ local plugins = {
     },
     config = true,
     event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
-    keys = {{
-      "<leader>vs", "<cmd>:VenvSelect<cr>",
-      -- optional if you use a autocmd (see #🤖-Automate)
-      "<leader>vc", "<cmd>:VenvSelectCached<cr>"
-    }},
+    keys = {
+      {
+        "<leader>vs",
+        "<cmd>:VenvSelect<cr>",
+        -- optional if you use a autocmd (see #🤖-Automate)
+        "<leader>vc",
+        "<cmd>:VenvSelectCached<cr>",
+      },
+    },
   },
   {
     "ActivityWatch/aw-watcher-vim",
@@ -135,21 +141,21 @@ local plugins = {
   {
     "lewis6991/gitsigns.nvim",
     config = function()
-      require("gitsigns").setup({
-        signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
-        numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
-        linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
-        word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+      require("gitsigns").setup {
+        signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+        numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
+        linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
+        word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
         watch_gitdir = { follow_files = true },
         attach_to_untracked = true,
         current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
         current_line_blame_opts = {
           virt_text = true,
-          virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+          virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
           delay = 1000,
           ignore_whitespace = false,
         },
-        current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
+        current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
         sign_priority = 6,
         update_debounce = 100,
         status_formatter = nil, -- Use default
@@ -164,38 +170,66 @@ local plugins = {
           end
 
           -- Navigation
-          map('n', ']c', function()
-            if vim.wo.diff then return ']c' end
-            vim.schedule(function() gs.next_hunk() end)
-            return '<Ignore>'
-          end, {expr=true})
+          map("n", "]c", function()
+            if vim.wo.diff then
+              return "]c"
+            end
+            vim.schedule(function()
+              gs.next_hunk()
+            end)
+            return "<Ignore>"
+          end, { expr = true })
 
-          map('n', '[c', function()
-            if vim.wo.diff then return '[c' end
-            vim.schedule(function() gs.prev_hunk() end)
-            return '<Ignore>'
-          end, {expr=true})
+          map("n", "[c", function()
+            if vim.wo.diff then
+              return "[c"
+            end
+            vim.schedule(function()
+              gs.prev_hunk()
+            end)
+            return "<Ignore>"
+          end, { expr = true })
 
           -- Actions
-          map('n', '<leader>hs', gs.stage_hunk)
-          map('n', '<leader>hr', gs.reset_hunk)
-          map('v', '<leader>hs', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
-          map('v', '<leader>hr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
-          map('n', '<leader>hS', gs.stage_buffer)
-          map('n', '<leader>hu', gs.undo_stage_hunk)
-          map('n', '<leader>hR', gs.reset_buffer)
-          map('n', '<leader>hp', gs.preview_hunk)
-          map('n', '<leader>hb', function() gs.blame_line{full=true} end)
-          map('n', '<leader>tb', gs.toggle_current_line_blame)
-          map('n', '<leader>hd', gs.diffthis)
-          map('n', '<leader>hD', function() gs.diffthis('~') end)
-          map('n', '<leader>td', gs.toggle_deleted)
+          map("n", "<leader>hs", gs.stage_hunk)
+          map("n", "<leader>hr", gs.reset_hunk)
+          map("v", "<leader>hs", function()
+            gs.stage_hunk { vim.fn.line ".", vim.fn.line "v" }
+          end)
+          map("v", "<leader>hr", function()
+            gs.reset_hunk { vim.fn.line ".", vim.fn.line "v" }
+          end)
+          map("n", "<leader>hS", gs.stage_buffer)
+          map("n", "<leader>hu", gs.undo_stage_hunk)
+          map("n", "<leader>hR", gs.reset_buffer)
+          map("n", "<leader>hp", gs.preview_hunk)
+          map("n", "<leader>hb", function()
+            gs.blame_line { full = true }
+          end)
+          map("n", "<leader>tb", gs.toggle_current_line_blame)
+          map("n", "<leader>hd", gs.diffthis)
+          map("n", "<leader>hD", function()
+            gs.diffthis "~"
+          end)
+          map("n", "<leader>td", gs.toggle_deleted)
 
           -- Text object
-          map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-        end
-      })
+          map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+        end,
+      }
     end,
+  },
+  {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("chatgpt").setup()
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
   },
 }
 return plugins

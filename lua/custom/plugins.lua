@@ -6,19 +6,6 @@ local plugins = {
     end,
   },
   {
-    "mfussenegger/nvim-dap-python",
-    ft = "python",
-    dependencies = {
-      "mfussenegger/nvim-dap",
-      "rcarriga/nvim-dap-ui",
-    },
-    config = function(_, opts)
-      local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
-      require("dap-python").setup(path)
-      require("core.utils").load_mappings "dap_python"
-    end,
-  },
-  {
     "rcarriga/nvim-dap-ui",
     dependencies = "mfussenegger/nvim-dap",
     config = function()
@@ -35,6 +22,58 @@ local plugins = {
         dapui.close()
       end
     end,
+  },
+  {
+    "mfussenegger/nvim-dap-python",
+    ft = "python",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "rcarriga/nvim-dap-ui",
+    },
+    config = function(_, opts)
+      local virtual = os.getenv "VIRTUAL_ENV" or os.getenv "CONDA_DEFAULT_ENV" or "/usr"
+      local path = virtual .. "/bin/python"
+      require("dap-python").setup(path)
+      require("core.utils").load_mappings "dap_python"
+    end,
+  },
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-neotest/neotest-python",
+      "rouge8/neotest-rust",
+      "nvim-neotest/neotest-go",
+    },
+    config = function()
+      require("neotest").setup {
+        adapters = {
+          require "neotest-python" {
+            dap = {
+              justMyCode = false,
+              console = "integratedTerminal",
+            },
+            args = { "--log-level", "DEBUG", "--quiet" },
+            runner = "pytest",
+          },
+          require "neotest-rust" {
+            args = { "--no-capture" },
+            dap_adapter = "lldb",
+          },
+        },
+      }
+    end,
+  },
+  {
+    "nvim-neotest/neotest-python",
+  },
+  {
+    "rouge8/neotest-rust",
+  },
+  {
+    "nvim-neotest/neotest-go",
   },
   {
     "zbirenbaum/copilot.lua",
@@ -223,7 +262,11 @@ local plugins = {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
     config = function()
-      require("chatgpt").setup()
+      require("chatgpt").setup {
+        openai_params = {
+          model = "gpt-4",
+        },
+      }
     end,
     dependencies = {
       "MunifTanjim/nui.nvim",

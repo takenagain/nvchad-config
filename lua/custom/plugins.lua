@@ -76,6 +76,9 @@ local plugins = {
     "nvim-neotest/neotest-go",
   },
   {
+    "simrat39/rust-tools.nvim",
+  },
+  {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     config = function()

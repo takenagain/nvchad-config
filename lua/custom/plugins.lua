@@ -75,9 +75,15 @@ local plugins = {
   {
     "nvim-neotest/neotest-go",
   },
-  {
-    "simrat39/rust-tools.nvim",
-  },
+  -- {
+  --   "simrat39/rust-tools.nvim",
+  --   lazy = false,
+  --   dependencies = {
+  --     "neovim/nvim-lspconfig",
+  --     "nvim-lua/plenary.nvim",
+  --     "mfussenegger/nvim-dap",
+  --   },
+  -- },
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",

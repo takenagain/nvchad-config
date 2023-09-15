@@ -2,6 +2,9 @@ local plugins = {
   {
     "mfussenegger/nvim-dap",
     config = function()
+      local dap_vscode = require "dap.ext.vscode"
+      dap_vscode.load_launchjs()
+
       require("core.utils").load_mappings "dap"
     end,
   },
@@ -23,9 +26,6 @@ local plugins = {
       dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close()
       end
-      local dap_vscode = require "dap.ext.vscode"
-      -- dap_vscode.json_decode = require("json5").parse
-      dap_vscode.load_launchjs()
     end,
   },
   {

@@ -1,13 +1,15 @@
 local plugins = {
   {
     "mfussenegger/nvim-dap",
-    config = function(_, opts)
+    config = function()
       require("core.utils").load_mappings "dap"
     end,
   },
   {
     "rcarriga/nvim-dap-ui",
-    dependencies = "mfussenegger/nvim-dap",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+    },
     config = function()
       local dap = require "dap"
       local dapui = require "dapui"
@@ -21,6 +23,9 @@ local plugins = {
       dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close()
       end
+      local dap_vscode = require "dap.ext.vscode"
+      -- dap_vscode.json_decode = require("json5").parse
+      dap_vscode.load_launchjs()
     end,
   },
   {
@@ -48,6 +53,7 @@ local plugins = {
       "nvim-neotest/neotest-go",
     },
     config = function()
+      require("core.utils").load_mappings "neotest"
       require("neotest").setup {
         adapters = {
           require "neotest-python" {
@@ -144,6 +150,9 @@ local plugins = {
     lazy = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {},
+    config = function()
+      require("core.utils").load_mappings "trouble"
+    end,
   },
   {
     "ibhagwan/fzf-lua",

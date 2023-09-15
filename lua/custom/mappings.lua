@@ -20,6 +20,12 @@ M.dap = {
     ["<leader>dr"] = { "<CMD>lua require('dap').repl.toggle() <CR>", "Toggle Repl" },
     ["<leader>dc"] = { "<CMD>lua require('dap').continue() <CR>", "Continue" },
     ["<leader>dx"] = { "<CMD>lua require('dap').terminate() <CR>", "Terminate" },
+  },
+}
+
+M.neotest = {
+  plugin = true,
+  n = {
     ["dm"] = { "<cmd>lua require('neotest').run.run()<cr>", "Test Method" },
     ["dM"] = { "<cmd>lua require('neotest').run.run({strategy = 'dap})<cr>", "Test Method DAP" },
     ["df"] = { "<cmd>lua require('neotest').run.run({vim.fn.expand('%')})<cr>", "Test Class" },

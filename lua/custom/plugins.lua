@@ -178,24 +178,6 @@ local plugins = {
       }
     end,
   },
-  -- {
-  --   'Equilibris/nx.nvim',
-  --   requires = {
-  --     'nvim-telescope/telescope.nvim',
-  --   },
-  --   lazy=false,
-  --   config = function()
-  --     require("nx").setup { }
-  --   end
-  -- },
-  {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle" },
-    ft = { "markdown" },
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
-  }, -- Markdown Preview
   {
     "linux-cultist/venv-selector.nvim",
     dependencies = {

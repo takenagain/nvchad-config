@@ -296,5 +296,9 @@ local plugins = {
       "nvim-telescope/telescope.nvim",
     },
   },
+  {
+    "tpope/vim-surround",
+    lazy = false,
+  },
 }
 return plugins

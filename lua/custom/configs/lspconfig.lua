@@ -23,7 +23,7 @@ lspconfig.ruff_lsp.setup {
   init_options = {
     settings = {
       args = {
-        "--config=py-api/pyprojct.toml",
+        "--config=~/Documents/docwize/docwize2/py-api/pyprojct.toml",
       },
     },
   },

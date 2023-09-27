@@ -287,6 +287,13 @@ local plugins = {
       require("chatgpt").setup {
         openai_params = {
           model = "gpt-4",
+          max_tokens = 2048, -- max is 8192 for gpt-4
+        },
+        chat = {
+          keymaps = {
+            new_session = "<C-m>",
+            select_session = "<C-Space>",
+          },
         },
       }
     end,

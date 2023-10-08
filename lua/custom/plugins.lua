@@ -318,8 +318,20 @@ local plugins = {
     dependencies = {
         'nvim-lua/plenary.nvim',
         'stevearc/dressing.nvim', -- optional for vim.ui.select
+        'mfussenegger/nvim-dap',
     },
-    config = true,
+    config = function ()
+      require("flutter-tools").setup {
+        debugger = { -- integrate with nvim dap + install dart code debugger
+          enabled = true,
+          run_via_dap = true, -- use dap instead of a plenary job to run flutter apps
+          register_configurations = function(_)
+            require("dap").configurations.dart = {}
+            require("dap.ext.vscode").load_launchjs()
+          end,
+        },
+      }
+    end,
   }
 }
 return plugins

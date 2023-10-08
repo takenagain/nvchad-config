@@ -9,6 +9,7 @@ local sources = {
   formatting.stylua,
   formatting.ruff,
   formatting.black,
+  formatting.dart_format,
   lint.mypy.with({
     extra_args = function()
       local virtual = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_DEFAULT_ENV") or "/usr"

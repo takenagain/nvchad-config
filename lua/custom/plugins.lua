@@ -1,5 +1,8 @@
 local plugins = {
   {
+    "nvim-lua/plenary.nvim"
+  },
+  {
     "mfussenegger/nvim-dap",
     config = function()
       local dap_vscode = require "dap.ext.vscode"
@@ -307,5 +310,16 @@ local plugins = {
     "tpope/vim-surround",
     lazy = false,
   },
+
+  -- Dart 
+  {
+    'akinsho/flutter-tools.nvim',
+    lazy = false,
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+        'stevearc/dressing.nvim', -- optional for vim.ui.select
+    },
+    config = true,
+  }
 }
 return plugins

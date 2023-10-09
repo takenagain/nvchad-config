@@ -51,4 +51,11 @@ M.trouble = {
   },
 }
 
+M.neogen = {
+  plugin = true,
+  n = {
+    ["<leader>nf"] = { "<CMD>lua require('neogen').generate() <CR>", "Neogen Generate" },
+  },
+}
+
 return M

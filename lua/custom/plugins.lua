@@ -1,6 +1,6 @@
 local plugins = {
   {
-    "nvim-lua/plenary.nvim"
+    "nvim-lua/plenary.nvim",
   },
   {
     "mfussenegger/nvim-dap",
@@ -310,17 +310,29 @@ local plugins = {
     "tpope/vim-surround",
     lazy = false,
   },
-
-  -- Dart 
   {
-    'akinsho/flutter-tools.nvim',
+    "danymat/neogen",
+    lazy = false,
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    -- config = true,
+    config = function()
+      require("neogen").setup {}
+      require("core.utils").load_mappings "neogen"
+    end,
+    -- Uncomment next line if you want to follow only stable versions
+    -- version = "*"
+  },
+
+  -- Dart
+  {
+    "akinsho/flutter-tools.nvim",
     lazy = false,
     dependencies = {
-        'nvim-lua/plenary.nvim',
-        'stevearc/dressing.nvim', -- optional for vim.ui.select
-        'mfussenegger/nvim-dap',
+      "nvim-lua/plenary.nvim",
+      "stevearc/dressing.nvim", -- optional for vim.ui.select
+      "mfussenegger/nvim-dap",
     },
-    config = function ()
+    config = function()
       require("flutter-tools").setup {
         debugger = { -- integrate with nvim dap + install dart code debugger
           enabled = true,
@@ -346,7 +358,7 @@ local plugins = {
             -- set to true to be able use the 'flutter_tools_decorations.project_config' in your statusline
             -- this will show the currently selected project configuration
             project_config = true,
-          }
+          },
         },
       }
     end,

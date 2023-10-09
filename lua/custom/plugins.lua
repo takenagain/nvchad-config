@@ -322,6 +322,13 @@ local plugins = {
     -- Uncomment next line if you want to follow only stable versions
     -- version = "*"
   },
+  {
+    "davidmh/cspell.nvim",
+    lazy = false,
+    config = function()
+      require("cspell").setup {}
+    end,
+  },
 
   -- Dart
   {

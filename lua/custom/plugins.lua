@@ -289,8 +289,8 @@ local plugins = {
     config = function()
       require("chatgpt").setup {
         openai_params = {
-          model = "gpt-4",
-          max_tokens = 2048, -- max is 8192 for gpt-4
+          model = "gpt-3.5-turbo",
+          max_tokens = 4096, -- max is 8192 for gpt-4
         },
         chat = {
           keymaps = {

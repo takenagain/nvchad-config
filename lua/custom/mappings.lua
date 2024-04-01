@@ -58,4 +58,11 @@ M.neogen = {
   },
 }
 
+M.outline = {
+  plugin = true,
+  n = {
+    ["<leader>lo"] = { "<CMD>Outline<CR>", "Toggle Outline" },
+  },
+}
+
 return M

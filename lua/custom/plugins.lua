@@ -207,8 +207,8 @@ local plugins = {
     config = function()
       require("gitsigns").setup {
         signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-        numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
-        linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
+        numhl = false,     -- Toggle with `:Gitsigns toggle_numhl`
+        linehl = false,    -- Toggle with `:Gitsigns toggle_linehl`
         word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
         watch_gitdir = { follow_files = true },
         attach_to_untracked = true,
@@ -222,7 +222,7 @@ local plugins = {
         current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
         sign_priority = 6,
         update_debounce = 100,
-        status_formatter = nil, -- Use default
+        status_formatter = nil,  -- Use default
         max_file_length = 40000, -- Disable if file is longer than this (in lines)
         on_attach = function(bufnr)
           local gs = package.loaded.gitsigns
@@ -341,7 +341,7 @@ local plugins = {
     },
     config = function()
       require("flutter-tools").setup {
-        debugger = { -- integrate with nvim dap + install dart code debugger
+        debugger = {          -- integrate with nvim dap + install dart code debugger
           enabled = true,
           run_via_dap = true, -- use dap instead of a plenary job to run flutter apps
           register_configurations = function(_)
@@ -350,7 +350,7 @@ local plugins = {
           end,
         },
         dev_tools = {
-          autostart = true, -- autostart devtools server if not detected
+          autostart = true,         -- autostart devtools server if not detected
           auto_open_browser = true, -- Automatically opens devtools in the browser
         },
         decorations = {
@@ -372,15 +372,13 @@ local plugins = {
   },
   {
     "hedyhli/outline.nvim",
-      config = function()
-        -- Example mapping to toggle outline
-        vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>",
-          { desc = "Toggle Outline" })
-
-        require("outline").setup {
-          -- Your setup opts here (leave empty to use defaults)
-        }
-      end,
+    lazy = false,
+    config = function()
+      require("core.utils").load_mappings "outline"
+      require("outline").setup {
+        -- Your setup opts here (leave empty to use defaults)
+      }
+    end,
   },
 }
 return plugins

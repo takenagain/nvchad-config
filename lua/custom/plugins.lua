@@ -85,35 +85,9 @@ local plugins = {
     "nvim-neotest/neotest-go",
   },
   {
-    "simrat39/rust-tools.nvim",
-    lazy = false,
-    dependencies = {
-      "neovim/nvim-lspconfig",
-      "nvim-lua/plenary.nvim",
-      "mfussenegger/nvim-dap",
-    },
-    config = function()
-      local mason_registry = require "mason-registry"
-      local codelldb = mason_registry.get_package "codelldb"
-      local extension_path = codelldb:get_install_path() .. "/extension/"
-      local codelldb_path = extension_path .. "adapter/codelldb"
-      local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
-      require("rust-tools").setup {
-        capabilities = require("cmp_nvim_lsp").default_capabilities(),
-        dap = {
-          adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
-        },
-        server = {
-          on_attach = function(_, bufnr)
-            local rt = require "rust-tools"
-            -- Hover actions
-            vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-            -- Code action groups
-            vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-          end,
-        },
-      }
-    end,
+    'mrcjkb/rustaceanvim',
+    version = '^4', -- Recommended
+    ft = { 'rust' },
   },
   {
     "zbirenbaum/copilot.lua",

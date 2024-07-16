@@ -159,13 +159,17 @@ local plugins = {
     "linux-cultist/venv-selector.nvim",
     dependencies = {
       "neovim/nvim-lspconfig",
-      "nvim-telescope/telescope.nvim",
+      "mfussenegger/nvim-dap", "mfussenegger/nvim-dap-python", --optional
+      { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
     },
+    lazy = false,
+    branch = "regexp",
     config = true,
     event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
     keys = {
       {
         "<leader>vs",
+        ",v",
         "<cmd>:VenvSelect<cr>",
         -- optional if you use a autocmd (see #🤖-Automate)
         "<leader>vc",
